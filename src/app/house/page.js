@@ -1,18 +1,19 @@
-import  {db} from "@/utils/dbConnection";
+// import  {db} from "@/utils/dbConnection";
 import Link from "next/link";
 
 export default async function HouseData({ searchParams }) {
-
+    const params = await searchParams;
     let sortValue = "d";
 
-    const houseData = (await db.query(`SELECT * FROM houses order by price desc`)).rows;
+
+    // const houseData = (await db.query(`SELECT * FROM houses order by price desc`)).rows;
     // console.log(houseData);
 
-     if (searchParams.sort === "asc") {
-        houseData.reverse();
+     if (params.sort === "asc") {
+        // houseData.reverse();
         sortValue = "a";
     }
-    else if(searchParams.sort === "desc") {
+    else if(params.sort === "desc") {
         sortValue = "d";
     }
 
@@ -29,7 +30,7 @@ export default async function HouseData({ searchParams }) {
                 <button className="border-2 border-red-500 p-2 rounded-2xl">Lowest Price</button>
             </Link> : null }
            </div>
-            <div className="grid grid-cols-1">
+            {/* <div className="grid grid-cols-1">
                 {houseData.map((house) => (
                     <div key={house.id} className="bg-gray-100 shadow-md rounded-lg p-6 flex justify-center space-x-4">
 
@@ -54,7 +55,7 @@ export default async function HouseData({ searchParams }) {
 
                     </div>
                 ))}
-            </div>
+            </div> */}
 
         </div>
     )
