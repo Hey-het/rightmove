@@ -6,16 +6,18 @@ export default function Product() {
 
             <div className="grid grid-cols-3  py-4 px-30">
                 <div className="container1 mx-4">
-                    <div><Image className="bg-white flex  items-center mx-20"
+                    <div>
+                        <Image className="bg-white flex  items-center mx-20"
                         src='/magnifyingglass.png'
-                        alt='magnifying' width={100} height={100} /></div>
+                        alt='magnifying' width={100} height={100} />
+                        </div>
 
 
                     <div  >
 
                         <h3 className="text-lg font-semibold px-8 mx-10 py-2">Free home valuation</h3>
                         <p className="text-sm py-4 mx-16">find out how much your home's worth from an export</p>
-                        <button className="text-teal-600 text-sm font-semibold text-center w-[350px] h-[50px]  bg-transparent hover:bg-gray-100  cursor-pointer">Get a Free agent valution</button>
+                        <button className="text-teal-600 text-sm font-semibold text-center w-[350px] h-[50px]  bg-transparent hover:bg-gray-100  cursor-pointer rounded-4xl">Get a Free agent valution</button>
 
                     </div>
                 </div>

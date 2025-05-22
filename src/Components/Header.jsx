@@ -11,7 +11,8 @@ export default function Header() {
         <div className="hidden md:flex space-x-6 text-sm font-medium text-blue-900 relative">
           <div className="group relative cursor-pointer hover:border-b-2  border-blue-900">
             <span className="hover:border-b-2  border-blue-900 p-3 hover:bg-gray-100">Buy</span>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6">
+           <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6 z-50">
+
               <div className=" mx-auto mr-64 grid grid-cols-2 ">
                 <div className="text-sm hover:underline">Property for sale</div>
                 <div className="text-sm hover:underline">New homes</div>
@@ -24,7 +25,8 @@ export default function Header() {
 
           <div className="group relative cursor-pointer hover:border-b-2  border-blue-900">
             <span className="hover:border-b-2 border-blue-900 p-3 hover:bg-gray-100">Rent</span>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6">
+           <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6 z-50">
+
               <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4">
                 <div className="text-sm hover:underline">Property to rent</div>
                 <div className="text-sm hover:underline">Student property to rent</div>
@@ -34,7 +36,8 @@ export default function Header() {
 
           <div className="group relative cursor-pointer hover:border-b-2  border-blue-900">
             <span className="hover:border-b-2 border-blue-900 p-3 hover:bg-gray-100">House Prices</span>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6">
+            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6 z-50">
+
               <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4">
                 <div className="text-sm hover:underline">Sold house prices</div>
                 <div className="text-sm hover:underline">Market trends</div>
@@ -44,7 +47,8 @@ export default function Header() {
 
           <div className="group relative cursor-pointer hover:border-b-2  border-blue-900">
             <span className="hover:border-b-2 border-blue-900 p-3 hover:bg-gray-100">Find Agent</span>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6">
+           <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6 z-50">
+
               <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4">
                 <div className="text-sm hover:underline">Estate agents</div>
                 <div className="text-sm hover:underline">Letting agents</div>
@@ -54,7 +58,8 @@ export default function Header() {
 
           <div className="group relative cursor-pointer hover:border-b-2  border-blue-900">
             <span className="hover:border-b-2 border-blue-900 p-3 hover:bg-gray-100">Commercial</span>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6">
+            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6 z-50">
+
               <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4">
                 <div className="text-sm hover:underline">Shops</div>
                 <div className="text-sm hover:underline">Offices</div>
@@ -64,7 +69,8 @@ export default function Header() {
 
           <div className="group relative cursor-pointer hover:border-b-2  border-blue-900">
             <span className="hover:border-b-2 border-blue-900 p-3 hover:bg-gray-100">Inspire</span>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6">
+            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6 z-50">
+
               <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4">
                 <div className="text-sm hover:underline">Blogs</div>
                 <div className="text-sm hover:underline">Ideas</div>
@@ -74,7 +80,8 @@ export default function Header() {
 
           <div className="group relative cursor-pointer hover:border-b-2  border-blue-900">
             <span className="hover:border-b-2 border-blue-900 p-3 hover:bg-gray-100">Overseas</span>
-            <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6">
+           <div className="absolute left-0 top-full mt-2 hidden group-hover:block bg-gray-100 shadow-md w-screen px-10 py-6 z-50">
+
               <div className="max-w-5xl mx-auto grid grid-cols-2 gap-4">
                 <div className="text-sm hover:underline">Properties abroad</div>
               </div>
