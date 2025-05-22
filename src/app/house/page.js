@@ -6,7 +6,7 @@ export default async function HouseData({ searchParams }) {
     let sortValue = "d";
 
 
-    // const houseData = (await db.query(`SELECT * FROM houses order by price desc`)).rows;
+    const houseData = (await db.query(`SELECT * FROM houses order by price desc`)).rows;
     // console.log(houseData);
 
      if (params.sort === "asc") {
