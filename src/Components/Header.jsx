@@ -1,3 +1,7 @@
+import { UserButton, SignInButton, SignUpButton, SignIn, SignedOut, SignedIn } from "@clerk/nextjs"
+// import { auth } from "@clerk/nextjs/server";
+
+
 export default function Header() {
   return (
     <>  
@@ -90,9 +94,13 @@ export default function Header() {
         </div>
 
         {/* Sign In */}
-        <button className="btn border border-green-400 text-sm font-semibold text-blue-900 px-4 py-1 rounded hover:bg-green-100">
-          Sign in
-        </button>
+       <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton>Sign In</SignInButton>
+            <SignUpButton>Sign Up</SignUpButton>
+          </SignedOut>
       </div>
     </div>
     </nav>

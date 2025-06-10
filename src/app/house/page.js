@@ -2,35 +2,31 @@ import  {db} from "@/utils/dbConnection";
 import Link from "next/link";
 
 export default async function HouseData({ searchParams }) {
-    const params = await searchParams;
-    let sortValue = "d";
+       const params = await searchParams;
+    const sortValue = params.sort === "asc" ? "a" : "d";
+    const sortDirection = sortValue === "a" ? "asc" : "desc";
 
+    const houseData = (await db.query(`SELECT * FROM houses ORDER BY price ${sortDirection}`)).rows;
 
-    const houseData = (await db.query(`SELECT * FROM houses order by price desc`)).rows;
-    // console.log(houseData);
-
-     if (params.sort === "asc") {
-        // houseData.reverse();
-        sortValue = "a";
-    }
-    else if(params.sort === "desc") {
-        sortValue = "d";
-    }
 
 
     return (
         <div className="p-2 mt-5 ">
             {/* <h1 className="text-4xl font-bold text-center mb-10">House Data</h1> */}
-           <div className="flex justify-end mb-5">
-            <h1 className="mt-2">Sort:</h1>
-             {sortValue==="d" ?<Link href="house?sort=asc">
-                <button className="border-2 border-red-500 p-2 rounded-2xl ">Hight Price</button>
-            </Link> : null }
-           {sortValue==="a"? <Link href="house?sort=desc">
-                <button className="border-2 border-red-500 p-2 rounded-2xl">Lowest Price</button>
-            </Link> : null }
-           </div>
-            {/* <div className="grid grid-cols-1">
+              <div className="flex justify-end mb-5">
+                <h1 className="mt-2">Sort:</h1>
+                {sortValue === "d" && (
+                    <Link href="/house?sort=asc">
+                        <button className="border-2 border-red-500 p-2 rounded-2xl">Highest Price</button>
+                    </Link>
+                )}
+                {sortValue === "a" && (
+                    <Link href="/house?sort=desc">
+                        <button className="border-2 border-red-500 p-2 rounded-2xl">Lowest Price</button>
+                    </Link>
+                )}
+            </div>
+            <div className="grid grid-cols-1">
                 {houseData.map((house) => (
                     <div key={house.id} className="bg-gray-100 shadow-md rounded-lg p-6 flex justify-center space-x-4">
 
@@ -55,7 +51,7 @@ export default async function HouseData({ searchParams }) {
 
                     </div>
                 ))}
-            </div> */}
+            </div>
 
         </div>
     )
