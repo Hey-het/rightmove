@@ -2,7 +2,7 @@ import pg from "pg";
 // import { connectionString } from "pg/lib/defaults";
 
 export function connect(){
-    const dbConnectionString = process.env.NEXT_PUBLIC_DATABASE_URL;
+    const dbConnectionString = process.env.NEXT_PUBLIC_DATABASE_URL || process.env.DATABASE_URL;
     const db = new pg.Pool({
         connectionString: dbConnectionString,
     });

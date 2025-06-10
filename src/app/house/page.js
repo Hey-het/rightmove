@@ -8,8 +8,6 @@ export default async function HouseData({ searchParams }) {
 
     const houseData = (await db.query(`SELECT * FROM houses ORDER BY price ${sortDirection}`)).rows;
 
-
-
     return (
         <div className="p-2 mt-5 ">
             {/* <h1 className="text-4xl font-bold text-center mb-10">House Data</h1> */}
@@ -54,5 +52,5 @@ export default async function HouseData({ searchParams }) {
             </div>
 
         </div>
-    )
-}
+    );
+} 
