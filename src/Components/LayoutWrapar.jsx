@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Header from '@/components/Header';
+import Header from "@/Components/Header"
 import CreateSignIn from '@/Components/CreateSignIn';
 
 export default function ClientLayoutWrapper({ children }) {
