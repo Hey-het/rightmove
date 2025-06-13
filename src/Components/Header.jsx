@@ -3,10 +3,10 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
-import CreateSignIn from "@/Components/CreateSignIn";
+// import CreateSignIn from "@/Components/CreateSignIn";
 
 
-export default function Navbar({ onSignInClick }) {
+export default function Header({ onSignInClick }) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   // const [showSignIn, setShowSignIn] = useState(false)
 

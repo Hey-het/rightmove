@@ -1,6 +1,7 @@
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
 import { ArrowLeft } from 'lucide-react';
+import Image from "next/image";
 
 export default async function HouseData({ searchParams }) {
     const params = await searchParams;
@@ -46,7 +47,7 @@ export default async function HouseData({ searchParams }) {
                             <div className="flex-1/2 w-full">
                                 <div className="relative w-full h-48">
                                     <Link href={`/house/${house.id}`}>
-                                        <img src={house.image_url} alt={house.title} className="w-full h-48 object-cover rounded-lg mb-4" />
+                                        <Image src={house.image_url} alt={house.title} className="w-full h-48 object-cover rounded-lg mb-4" />
                                     </Link>
                                 </div>
                                 <div className="">

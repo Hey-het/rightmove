@@ -1,6 +1,7 @@
 import { db } from "@/utils/dbConnection";
 import { ArrowLeft } from 'lucide-react';
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function HouseDetail({ params }) {
     const id = await params;
@@ -20,7 +21,7 @@ export default async function HouseDetail({ params }) {
             <h1 className="text-4xl font-bold mb-4">{house.house_name}</h1>
 
             {/* Main Image */}
-            <img
+            <Image
                 src={house.image_url}
                 alt={house.house_name}
                 className="w-full h-[450px] object-cover rounded-lg mb-6"
@@ -71,7 +72,7 @@ export default async function HouseDetail({ params }) {
             {house.floorplan_url && (
                 <div className="mb-6">
                     <h2 className="text-2xl font-semibold mb-2">Floor Plan</h2>
-                    <img src={house.floorplan_url} alt="Floor Plan" className="w-full rounded" />
+                    <Image src={house.floorplan_url} alt="Floor Plan" className="w-full rounded" />
                 </div>
             )}
 
@@ -80,8 +81,8 @@ export default async function HouseDetail({ params }) {
                 <div className="mb-6">
                     <h2 className="text-2xl font-semibold mb-4">Gallery</h2>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {house.images.split(',').map((img, idx) => (
-                            <img key={idx} src={img.trim()} alt={`Gallery ${idx + 1}`} className="rounded-lg" />
+                        {house.images.split(',').map((Image, idx) => (
+                            <Image key={idx} src={Image.trim()} alt={`Gallery ${idx + 1}`} className="rounded-lg" />
                         ))}
                     </div>
                 </div>

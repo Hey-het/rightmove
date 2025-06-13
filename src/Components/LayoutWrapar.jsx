@@ -1,15 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import Navbar from '@/components/Header';
-import CreateSignIn from '@/components/CreateSignIn';
+import Header from '@/components/Header';
+import CreateSignIn from '@/Components/CreateSignIn';
 
 export default function ClientLayoutWrapper({ children }) {
   const [showSignIn, setShowSignIn] = useState(false);
 
   return (
     <>
-      <Navbar onSignInClick={() => setShowSignIn(true)} />
+      <Header onSignInClick={() => setShowSignIn(true)} />
       {showSignIn && <CreateSignIn onClose={() => setShowSignIn(false)} />}
       {children}
     </>
