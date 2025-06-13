@@ -4,6 +4,7 @@ import DetailsProduct from "@/Components/DetailsProduct";
 import Image from "next/image";         
 import Banner from "@/Components/Banner";
 import Container from "@/Components/Container";
+import CreateSignIn from "@/Components/CreateSignIn";
 
 
 
@@ -16,7 +17,9 @@ export default function Home() {
     <br/>
     <Product/>
       <br/>
-    <DetailsProduct/>          
+    <DetailsProduct/>  
+    <br/>
+    {/* <CreateSignIn />         */}
     </>
   );
 }

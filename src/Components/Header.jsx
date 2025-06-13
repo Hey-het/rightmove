@@ -3,9 +3,12 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs'
+import CreateSignIn from "@/Components/CreateSignIn";
 
-export default function Navbar() {
+
+export default function Navbar({ onSignInClick }) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  // const [showSignIn, setShowSignIn] = useState(false)
 
   return (
     <div className="relative z-50">
@@ -13,7 +16,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
           <div className="text-xl font-bold text-[#111] flex items-center">
-            <span>rightmove</span><span className="text-green-500 ml-1">▵</span>
+            <span className='font-sans'>rightmove</span><span className="text-green-500 ml-1">▵</span>
           </div>
 
           {/* Navigation Links */}
@@ -27,12 +30,12 @@ export default function Navbar() {
               onMouseEnter={() => setDropdownOpen(true)}
               onMouseLeave={() => setDropdownOpen(false)}
             >
-              <span className={`hover:text-blue-700 cursor-pointer pb-1 border-b-2 transition ${dropdownOpen ? 'border-blue-700' : 'border-transparent'}`}>House Prices</span>
+              <span className={`hover:text-blue-700 cursor-pointer pb-2 border-b-2 transition ${dropdownOpen ? 'border-blue-700' : 'border-transparent'}`}>House Prices</span>
 
               {/* Dropdown Area with 35% Height and wrapping items into 2 columns */}
               {dropdownOpen && (
                 <div
-                  className="fixed left-0 top-[52px] w-full h-[20vh] bg-[#f5f6f7] border-t border-gray-300 shadow-md py-12 px-12 z-40"
+                  className="fixed left-0 top-[52px] w-full h-[20vh] bg-[#f5f6f7] border-t border-gray-300 shadow-md py-6 px-12 z-40"
                   onMouseEnter={() => setDropdownOpen(true)}
                   onMouseLeave={() => setDropdownOpen(false)}
                 >
@@ -44,7 +47,7 @@ export default function Navbar() {
                     <Link href="#" className="hover:underline">Check area prices</Link>
                     <Link href="#" className="hover:underline">Price trends near you</Link>
                   </div>
-                  
+
                 </div>
               )}
             </div>
@@ -61,11 +64,11 @@ export default function Navbar() {
               <UserButton afterSignOutUrl='/' />
             </SignedIn>
             <SignedOut>
-              <SignInButton>
-                <button className="px-4 py-1 rounded border border-gray-400 text-[#0d3c55] hover:bg-gray-100">Sign in</button>
-              </SignInButton>
               <SignUpButton>
-                <button className="px-4 py-1 rounded border border-green-500 text-green-600 hover:bg-green-100">Sign up</button>
+                <button onClick={onSignInClick}
+                className="px-4 py-1 rounded border border-green-500 text-green-600 hover:bg-green-100">
+                  Sign up
+                </button>
               </SignUpButton>
             </SignedOut>
           </div>
