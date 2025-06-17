@@ -1,15 +1,32 @@
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
+
 import { ArrowLeft } from 'lucide-react';
-import Image from "next/image";
 
 export default async function HouseData({ searchParams }) {
-    const params = await searchParams;
-    const sortValue = params.sort === "asc" ? "a" : "d";
-    const sortDirection = sortValue === "a" ? "asc" : "desc";
+    const Params = searchParams
+      const postcode = Params.postcode || "";
 
-    const houseData = (await db.query(`SELECT * FROM houses ORDER BY price ${sortDirection}`)).rows;
+  // Determine sorting direction based on sort param
+  // "asc" means ascending, else descending
+  const sortDirection =  Params.sort === "asc" ? "asc" : "desc";
 
+  // Prepare SQL query and parameters
+  let queryText;
+  let queryParams = [];
+
+  if (postcode) {
+    // If postcode exists, filter houses by postcode (case-insensitive match)
+    queryText = `SELECT * FROM houses WHERE post_code ILIKE $1 ORDER BY price ${sortDirection}`;
+    queryParams = [`%${postcode}%`]; // Use % for partial matching
+  } else {
+    // No postcode, get all houses sorted by price
+    queryText = `SELECT * FROM houses ORDER BY price ${sortDirection}`;
+  }
+
+  // Run the query with parameters
+  const result = await db.query(queryText, queryParams);
+  const houseData = result.rows;
     return (
         <div className="p-2 mt-5 ">
             {/* Container with flex and justify-between */}
@@ -26,12 +43,12 @@ export default async function HouseData({ searchParams }) {
                 {/* Sort controls on the right */}
                 <div className="flex items-center space-x-4">
                     <h1 className="mt-2">Sort:</h1>
-                    {sortValue === "d" && (
+                    {sortDirection === "d" && (
                         <Link href="/house?sort=asc">
                             <button className="border-2 border-red-500 p-2 rounded-2xl">Highest Price</button>
                         </Link>
                     )}
-                    {sortValue === "a" && (
+                    {sortDirection === "a" && (
                         <Link href="/house?sort=desc">
                             <button className="border-2 border-red-500 p-2 rounded-2xl">Lowest Price</button>
                         </Link>
@@ -47,7 +64,7 @@ export default async function HouseData({ searchParams }) {
                             <div className="flex-1/2 w-full">
                                 <div className="relative w-full h-48">
                                     <Link href={`/house/${house.id}`}>
-                                        <Image src={house.image_url} alt={house.title} className="w-full h-48 object-cover rounded-lg mb-4" />
+                                        <img src={house.image_url} alt={house.title} className="w-full h-48 object-cover rounded-lg mb-4" />
                                     </Link>
                                 </div>
                                 <div className="">
@@ -56,7 +73,8 @@ export default async function HouseData({ searchParams }) {
                             </div>
                             <div className="bg-white flex-1/2 ">
                                 <h2 className="text-xl font-semibold ml-14 mt-5">{house.house_name}</h2>
-                                <p className="text-gray-600 ml-14">{house.owner}</p>
+                                <h2 className="text-lg  ml-14">{house.post_code}</h2>
+                                {/* <p className="text-gray-600 ml-14">{house.owner}</p> */}
                                 <p className="text-gray-600 ml-14">{house.address}</p>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ export default function Signcontainer() {
           </p>
         </div>
         <div className=" items-center justify-center">
-          <Link href="/createSignIn">          
+          <Link href="/CreateSignIn">          
           <button className=" border-2 border-black bg-white  text-black hover:bg-gray-300 rounded-lg w-[300px] h-[50px] cursor-pointer">
             Sign in or create an account
           </button>
