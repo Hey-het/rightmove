@@ -15,9 +15,12 @@ export default function Header({ onSignInClick }) {
       <nav className="bg-white border-b border-gray-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
           {/* Logo */}
-          <div className="text-xl font-bold text-[#111] flex items-center">
-            <span className='font-sans'>rightmove</span><span className="text-green-500 ml-1">▵</span>
-          </div>
+          <Link href="/">
+            <div className="text-xl font-bold text-[#111] flex items-center">
+              <span className='font-sans'>rightmove</span>
+              <span className="text-green-500 ml-1">▵</span>
+            </div>
+          </Link>
 
           {/* Navigation Links */}
           <div className="hidden md:flex space-x-6 text-sm font-medium text-[#111] relative">
@@ -66,7 +69,7 @@ export default function Header({ onSignInClick }) {
             <SignedOut>
               <SignUpButton>
                 <button onClick={onSignInClick}
-                className="px-4 py-1 rounded border border-green-500 text-green-600 hover:bg-green-100">
+                  className="px-4 py-1 rounded border border-green-500 text-green-600 hover:bg-green-100">
                   Sign up
                 </button>
               </SignUpButton>

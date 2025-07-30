@@ -4,55 +4,81 @@ import Link from "next/link";
 import { ArrowLeft } from 'lucide-react';
 
 export default async function HouseData({ searchParams }) {
-    const Params = searchParams
-      const postcode = Params.postcode || "";
+    const Params = await searchParams
+    const postcode =  Params.postcode || "";
+      const propertyType = Params.propertyType || "";
+      
 
-  // Determine sorting direction based on sort param
-  // "asc" means ascending, else descending
-  const sortDirection =  Params.sort === "asc" ? "asc" : "desc";
 
-  // Prepare SQL query and parameters
-  let queryText;
-  let queryParams = [];
+    // Determine sorting direction based on sort param
+    // "asc" means ascending, else descending
+    const sortDirection = await Params.sort === "asc" ? "asc" : "desc";
 
-  if (postcode) {
-    // If postcode exists, filter houses by postcode (case-insensitive match)
-    queryText = `SELECT * FROM houses WHERE post_code ILIKE $1 ORDER BY price ${sortDirection}`;
-    queryParams = [`%${postcode}%`]; // Use % for partial matching
-  } else {
-    // No postcode, get all houses sorted by price
+    // Prepare SQL query and parameters
+    let queryText;
+    let queryParams = [];
+
+   if (postcode && propertyType) {
+    queryText = `
+      SELECT * FROM houses 
+      WHERE post_code ILIKE $1 AND property_type = $2 
+      ORDER BY price ${sortDirection}
+    `;
+    queryParams = [`%${postcode}%`, propertyType];
+  } else if (postcode) {
+    queryText = `
+      SELECT * FROM houses 
+      WHERE post_code ILIKE $1 
+      ORDER BY price ${sortDirection}
+    `;
+    queryParams = [`%${postcode}%`];
+  } else if (propertyType) {
+    queryText = `
+      SELECT * FROM houses 
+      WHERE property_type = $1 
+      ORDER BY price ${sortDirection}
+    `;
+    queryParams = [propertyType];
+  } 
+  else {
     queryText = `SELECT * FROM houses ORDER BY price ${sortDirection}`;
+
   }
 
-  // Run the query with parameters
-  const result = await db.query(queryText, queryParams);
-  const houseData = result.rows;
+// queryText = `SELECT * FROM houses ORDER BY price ${sortDirection}`;
+    
+
+    // Run the query with parameters
+    const result = await db.query(queryText, queryParams);
+    const houseData = result.rows;
     return (
         <div className="p-2 mt-5 ">
             {/* Container with flex and justify-between */}
-            <div className="flex justify-between items-center mb-5">
+            <div className="flex justify-between items-center mb-5 ">
                 {/* Back arrow on the left */}
                 <Link href="/">
                     <div className="flex items-center cursor-pointer bg-color-green-500">
-                         <h1 className="text-teal-600 font-semibold text-sm px-8 pt-6 mb-4 cursor-pointer">home<ArrowLeft className="w-4 h-4 inline ml-2 " /></h1>
+                        <h1 className="text-teal-600 font-semibold text-sm px-8 pt-6 mb-4 cursor-pointer">home<ArrowLeft className="w-4 h-4 inline ml-2 " /></h1>
                         {/* Optional label next to arrow */}
                         {/* <span className="ml-1">Back</span> */}
                     </div>
                 </Link>
 
                 {/* Sort controls on the right */}
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4 ">
                     <h1 className="mt-2">Sort:</h1>
-                    {sortDirection === "d" && (
-                        <Link href="/house?sort=asc">
+                    {sortDirection === "desc" && (
+                        <Link href={`/house?postcode=${postcode}&propertyType=${propertyType}&sort=asc`}>
                             <button className="border-2 border-red-500 p-2 rounded-2xl">Highest Price</button>
                         </Link>
                     )}
-                    {sortDirection === "a" && (
-                        <Link href="/house?sort=desc">
+
+                    {sortDirection === "asc" && (
+                        <Link href={`/house?postcode=${postcode}&propertyType=${propertyType}&sort=desc`}>
                             <button className="border-2 border-red-500 p-2 rounded-2xl">Lowest Price</button>
                         </Link>
                     )}
+
                 </div>
             </div>
 
