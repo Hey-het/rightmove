@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-export default function PropertySearchForm({ houseDetails }) {
+export default function FilterPage({ houseDetails }) {
   const [propertyType, setPropertyType] = useState("");
   // const [radius, setRadius] = useState("");
 
@@ -10,18 +10,7 @@ export default function PropertySearchForm({ houseDetails }) {
   const searchParams = useSearchParams();
 
   const postcode = searchParams.get("postcode") || ""; // default if not set
-  // const selectedProperty = searchParams.get("propertyType");
-
-  // function checkRadius(radius, distance) {
-  //   const numDistance = Number(distance);
-  //   if (radius === "any" || radius === "")
-  //     return true;
-  //   if (radius === "1") return numDistance  = 1
-  //   if (radius === "2") return numDistance  = 2
-  //   if (radius === "3") return numDistance  = 3;
-  //   return true;
-  // }
-
+ 
   function houseData(e) {
     e.preventDefault();
 

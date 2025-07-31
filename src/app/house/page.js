@@ -1,6 +1,5 @@
 import { db } from "@/utils/dbConnection";
 import Link from "next/link";
-
 import { ArrowLeft } from 'lucide-react';
 
 export default async function HouseData({ searchParams }) {
@@ -8,8 +7,7 @@ export default async function HouseData({ searchParams }) {
     const postcode =  Params.postcode || "";
       const propertyType = Params.propertyType || "";
       
-
-
+      
     // Determine sorting direction based on sort param
     // "asc" means ascending, else descending
     const sortDirection = await Params.sort === "asc" ? "asc" : "desc";
